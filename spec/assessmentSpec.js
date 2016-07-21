@@ -181,14 +181,15 @@ describe('Chimichanga', function() {
     expect(Chimichanga).toEqual(jasmine.any(Function));
   })
   it('should be a constructor function', function() {
-    expect(Chimichanga()).toEqual(jasmine.any(Object));
+    expect(new Chimichanga()).toEqual(jasmine.any(Object));
   })
 
   it('should make a great chimichanga', function() {
-    var mmm = Chimichanga();
+    var mmm = new Chimichanga();
 
-    mmm();
-    mmm();
+    mmm.eat();
+    mmm.eat();
+
     expect(mmm.percentLeft).toEqual(60);
   })
 })
