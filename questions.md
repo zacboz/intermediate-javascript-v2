@@ -1,21 +1,21 @@
-# Given the following function 
+# Given the following function
 ```
 function grandpa(){
     var playball = "homerun";
 
     function dad(){
         var playball = "touchdown";
-        
+
         function son(){
             var playnintendo = "Mario";
         }   
     }
-    
+
     function uncle(){        
         var badjoke = "Har";
-        
+
         function cousin(){
-            
+
         }
     }
 }
@@ -40,12 +40,16 @@ var scopeArray5 = ["grandpa", "dad", "son", "uncle", "cousin"];
 
 
 
-
+`var foo;`
 Promises
-BRETT
+  Write a function called async.
+  Use $q to create a promise object and return the promise.
+  Call setTimeout on a function
+  which changes the variable foo (above) to 'bar'
+  Resolve the promise when setTimeout completes.
 
-Context 
-# Context 1 
+Context
+# Context 1
 Write a function that takes in 4 parameters: A function called myFn, an object called context, param1, and param2.
 Invoke myFn explicitly setting the context to the object called context.  Pass in param1 and param2 in order as well.
 
