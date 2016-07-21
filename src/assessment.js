@@ -6,8 +6,6 @@ var foo;
   And resolve the promise when setTimeout completes.
 */
 
-var $q = q;
-
 function async() {
   var defer = $q.defer();
 
