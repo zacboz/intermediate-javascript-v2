@@ -34,22 +34,77 @@ describe('async', function() {
 })
 
 
-describe('contexter', function() {
+describe('context1', function() {
+
+  var getNum = function() {
+    return Math.floor(Math.random() * 100);
+  }
+
   it('should exist', function() {
-    expect(contexter).toEqual(jasmine.any(Function));
+    expect(context1).toEqual(jasmine.any(Function));
   })
 
   it('should correctly assign context', function() {
-    var getNum = function() {
-      Math.floor(Math.random() * 100);
-    }
+    // var getNum = function() {
+    //   Math.floor(Math.random() * 100);
+    // }
     var num = getNum();
     var num2 = getNum(), num3 = getNum();
     var obj = {num: num};
     function sum(a, b) {
       return this.num + a + b;
     }
-    var result = contexter(sum, obj, num2, num3);
+    var result = context1(sum, obj, num2, num3);
     expect(result).toEqual(num + num2 + num3);
+  })
+})
+
+describe('context2', function() {
+  var getNum = function() {
+    return Math.floor(Math.random() * 100);
+  }
+
+  it('should exist', function() {
+    expect(context2).toEqual(jasmine.any(Function));
+  })
+
+  it('should correctly assign context', function() {
+    var nums = [getNum(), getNum(), getNum()]
+    console.log(nums);
+    var num = getNum();
+    var obj = {number: num};
+
+    function sum(a, b, c) {
+      return this.number + a + b + c;
+    }
+    var result = context2(sum, obj, nums);
+    expect(result).toEqual(num + nums.reduce(function(a, b) {
+      return a + b;
+    }))
+  })
+})
+
+describe('context3', function() {
+  var getNum = function() {
+    return Math.floor(Math.random() * 100);
+  }
+  it('should exist', function() {
+    expect(context3).toEqual(jasmine.any(Function));
+  })
+
+  it('should return a function', function() {
+    expect(context3(function() {})).toEqual(jasmine.any(Function))
+  })
+
+  it('should assign context correctly', function() {
+    var obj = {
+      num: getNum()
+    };
+
+    function get() {
+      return this.num
+    }
+
+    expect(context3(get, obj)()).toEqual(obj.num)
   })
 })
