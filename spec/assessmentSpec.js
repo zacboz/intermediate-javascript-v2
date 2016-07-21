@@ -145,21 +145,21 @@ describe('Taco', function() {
   })
 })
 
-describe('burrito', function() {
+describe('Burrito', function() {
   it('should exist', function() {
-    expect(burrito).toEqual(jasmine.any(Function));
+    expect(Burrito).toEqual(jasmine.any(Function));
   })
 
   it('should be a constructor', function() {
-    expect(new burrito()).toEqual(jasmine.any(Object));
+    expect(new Burrito()).toEqual(jasmine.any(Object));
   })
 
   it('should have a method called eat', function() {
-    expect(new burrito().eat).toEqual(jasmine.any(Function));
+    expect(new Burrito().eat).toEqual(jasmine.any(Function));
   })
 
   it('should subtract from percentLeft', function() {
-    var californiaBurrito = new burrito();
+    var californiaBurrito = new Burrito();
     californiaBurrito.eat();
     californiaBurrito.eat();
     expect(californiaBurrito.percentLeft).toEqual(50);
