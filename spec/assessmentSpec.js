@@ -201,3 +201,25 @@ describe('subway', function() {
     expect(newOrder).not.toEqual(originalOrder);
   })
 })
+
+// Write a function called compareValues that takes in 2 parameters.
+// If both parameters are the same type an the same value return "Exact match".
+// If both parameters have the same value but are different types return "Different types"
+// Otherwise return "Different values"
+describe('compareValues', function() {
+  it('should exist', function() {
+    expect(compareValues).toEqual(jasmine.any(Function))
+  });
+
+  it('should find exact matches', function() {
+    expect(compareValues(7, 7)).toEqual("Exact match")
+  });
+
+  it('should find different types matches', function() {
+    expect(compareValues(7, "7")).toEqual("Different types")
+  });
+
+  it('should find non-matches', function() {
+    expect(compareValues(7, "97")).toEqual("Different values")
+  });
+})
