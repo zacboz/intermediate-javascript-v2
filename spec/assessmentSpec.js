@@ -109,15 +109,15 @@ describe('context3', function() {
   })
 })
 
-describe('taco', function() {
+describe('Taco', function() {
   it('should exist', function() {
-    expect(taco).toEqual(jasmine.any(Function));
+    expect(Taco).toEqual(jasmine.any(Function));
   })
   it('should be a constructor', function() {
-    expect(new taco()).toEqual(jasmine.any(Object));
+    expect(new Taco()).toEqual(jasmine.any(Object));
   })
 
-  it('should make a good taco', function() {
+  it('should make a good Taco', function() {
 
     function getIngredients() {
       var shell = ['flour', 'corn', 'seaweed'];
@@ -134,7 +134,7 @@ describe('taco', function() {
     var ingredients = getIngredients();
 
     expect(
-      new taco(ingredients[0], ingredients[1], ingredients[2])
+      new Taco(ingredients[0], ingredients[1], ingredients[2])
     ).toEqual(jasmine.objectContaining(
       {
         shell: ingredients[0],
@@ -162,7 +162,48 @@ describe('burrito', function() {
     var californiaBurrito = new burrito();
     californiaBurrito.eat();
     californiaBurrito.eat();
-    expect(californiaBurrito.percentLeft).toEqual(60);
+    expect(californiaBurrito.percentLeft).toEqual(50);
+  })
+})
+
+describe('doubler', function () {
+  it('should exist', function () {
+    expect(Array.prototype.doubler).toEqual(jasmine.any(Function))
+  });
+
+  it('should double an array', function () {
+    expect([1, 2, 3].doubler()).toEqual([2, 4, 6]);
+  });
+});
+
+describe('Chimichanga', function() {
+  it('should exist', function() {
+    expect(Chimichanga).toEqual(jasmine.any(Function));
+  })
+  it('should be a constructor function', function() {
+    expect(Chimichanga()).toEqual(jasmine.any(Object));
+  })
+
+  it('should make a great chimichanga', function() {
+    var mmm = Chimichanga();
+
+    mmm();
+    mmm();
+    expect(mmm.percentLeft).toEqual(60);
+  })
+})
+
+describe('sentenceMachine', function() {
+  it('should exist', function() {
+    expect(sentenceMachine).toEqual(jasmine.any(Function))
+  })
+
+  it('should return a function', function() {
+    expect(sentenceMachine()).toEqual(jasmine.any(Function))
+  })
+  //TODO: randomize sentences
+  it('should smash two sentences together. *HULK SMASH!*', function() {
+    expect(sentenceMachine('HULK ')('SMASH')).toEqual('HULK SMASH');
   })
 })
 
