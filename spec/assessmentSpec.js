@@ -1,8 +1,8 @@
 describe('grandpa', function() {
   it ('should have the correct answers', function() {
     expect(scopeArray1).toEqual(jasmine.any(Array));
-    expect(scopeArray1).toContain('dad', 'son', 'granpa', 'uncle', 'cousin');
-    expect(scopeArray2).toContain('dad', 'son', 'uncle', 'cousin');
+    expect(scopeArray1).toContain('grandpa', 'uncle', 'cousin');
+    expect(scopeArray2).toContain('dad', 'son');
     expect(scopeArray3).toContain('grandpa', 'dad', 'son');
     expect(scopeArray4).toContain('uncle', 'cousin');
     expect(scopeArray5).toContain('son');
@@ -106,5 +106,62 @@ describe('context3', function() {
     }
 
     expect(context3(get, obj)()).toEqual(obj.num)
+  })
+})
+
+describe('taco', function() {
+  it('should exist', function() {
+    expect(taco).toEqual(jasmine.any(Function));
+  })
+  it('should be a constructor', function() {
+    expect(new taco()).toEqual(jasmine.any(Object));
+  })
+
+  it('should make a good taco', function() {
+
+    function getIngredients() {
+      var shell = ['flour', 'corn', 'seaweed'];
+      var meat = ['chicken', 'beef', 'pork'];
+      var veggies = ['lettuce', 'tomato', 'onion'];
+      var num = Math.floor(Math.random() * 3);
+      return {
+        shell: shell[num],
+        meat: meat[num],
+        veggies: veggies[num]
+      }
+    }
+
+    var ingredients = getIngredients();
+
+    expect(
+      new taco(ingredients[0], ingredients[1], ingredients[2])
+    ).toEqual(jasmine.objectContaining(
+      {
+        shell: ingredients[0],
+        meat: ingredients[1],
+        veggies: ingredients[2]
+      }
+    ))
+  })
+})
+
+describe('burrito', function() {
+  it('should exist', function() {
+    expect(burrito).toEqual(jasmine.any(Function));
+  })
+
+  it('should be a constructor', function() {
+    expect(new burrito()).toEqual(jasmine.any(Object));
+  })
+
+  it('should have a method called eat', function() {
+    expect(new burrito().eat).toEqual(jasmine.any(Function));
+  })
+
+  it('should subtract from percentLeft', function() {
+    var californiaBurrito = new burrito();
+    californiaBurrito.eat();
+    californiaBurrito.eat();
+    expect(californiaBurrito.percentLeft).toEqual(60);
   })
 })
