@@ -165,3 +165,39 @@ describe('burrito', function() {
     expect(californiaBurrito.percentLeft).toEqual(60);
   })
 })
+
+describe('subway', function() {
+  beforeEach(function() {
+    this.names = ['Jeremy', 'Brack', 'Brett', 'Brian', 'Jess', 'Stephen'];
+    this.ingredients = ['turkey', 'bacon', 'ham', 'swiss'];
+    this.name = this.names[Math.floor(Math.random() * this.names.length)];
+    this.ingredient = this.ingredients[Math.floor(Math.random() * this.ingredients.length)]
+    this.order = subway(this.name);
+  })
+  it('should exist', function() {
+    expect(subway).toEqual(jasmine.any(Function));
+  })
+
+  it('should return a function', function() {
+    expect(subway("Brett")).toEqual(jasmine.any(Function))
+  })
+
+  it('should add ingredients', function() {
+    var that = this;
+
+    expect(this.order(this.ingredient))
+      .toEqual(jasmine.objectContaining(
+        {
+          orderPerson: that.name,
+          ingredients: [that.ingredient]
+        }
+      ))
+  })
+
+  it('should not get orders mixed up', function() {
+    var newOrder = subway(this.names[Math.floor(Math.random() * this.names.length)])
+    var originalOrder = this.order(this.ingredient);
+
+    expect(newOrder).not.toEqual(originalOrder);
+  })
+})
