@@ -244,10 +244,6 @@ describe('subway', function() {
   })
 })
 
-// Write a function called compareValues that takes in 2 parameters.
-// If both parameters are the same type an the same value return "Exact match".
-// If both parameters have the same value but are different types return "Different types"
-// Otherwise return "Different values"
 describe('compareValues', function() {
   it('should exist', function() {
     expect(compareValues).toEqual(jasmine.any(Function))
