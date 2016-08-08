@@ -2,21 +2,21 @@
 // # Scope
 // Given the following function
 // ```
-// function grandpa(){
-//     var playball = "homerun";
+// function street(){
+//     var weather = "rainy";
 
-//     function dad(){
-//         var playball = "touchdown";
+//     function firstFloor(){
+//         var weather = "dry";
 
-//         function son(){
-//             var playnintendo = "Mario";
-//         }   
+//         function secondFloor(){
+//             var temperature = 72;
+//         }
 //     }
 
-//     function uncle(){        
-//         var badjoke = "Har";
+//     function neighbors(){
+//         var ceiling = "leaking";
 
-//         function cousin(){
+//         function neighborsSecondFloor(){
 
 //         }
 //     }
@@ -25,29 +25,29 @@
 
 // Remove entries from the array until only correct answers remain
 
-// Which function(s) access the playball variable and get homerun (Delete wrong answers, leave correct ones)
-var scopeArray1 = ["grandpa", "dad", "son", "uncle", "cousin"];
+// Which function(s) access the weather variable and get "rainy" (Delete wrong answers, leave correct ones)
+var scopeArray1 = ["street", "firstFloor", "secondFloor", "neighbors", "neighborsSecondFloor"];
 
-// Which function(s) access the playball variable and get touchdown (Delete wrong answers, leave correct ones)
-var scopeArray2 = ["grandpa", "dad", "son", "uncle", "cousin"];
+// Which function(s) access the weather variable and get "dry" (Delete wrong answers, leave correct ones)
+var scopeArray2 = ["street", "firstFloor", "secondFloor", "neighbors", "neighborsSecondFloor"];
 
-// Which function(s) access the badjoke variable and get undefined (Delete wrong answers, leave correct ones)
-var scopeArray3 = ["grandpa", "dad", "son", "uncle", "cousin"];
+// Which function(s) access the ceiling variable and get undefined (Delete wrong answers, leave correct ones)
+var scopeArray3 = ["street", "firstFloor", "secondFloor", "neighbors", "neighborsSecondFloor"];
 
-// Which functions accesss the badjoke variable and get "Har" (Delete wrong answers, leave correct ones)
-var scopeArray4 = ["grandpa", "dad", "son", "uncle", "cousin"];
+// Which functions accesss the ceiling variable and get "leaking" (Delete wrong answers, leave correct ones)
+var scopeArray4 = ["street", "firstFloor", "secondFloor", "neighbors", "neighborsSecondFloor"];
 
-// Which functions access the playnintendo variable and get Mario (Delete wrong answers, leave correct ones)
-var scopeArray5 = ["grandpa", "dad", "son", "uncle", "cousin"];
+// Which functions access the temperature variable and get 72 (Delete wrong answers, leave correct ones)
+var scopeArray5 = ["street", "firstFloor", "secondFloor", "neighbors", "neighborsSecondFloor"];
 
 
 // #2  ###################
 // # Promises
-var foo;
+var changed = false;
 /* Write a function called async.
   Use $q to create a promise object and return the promise.
   Call setTimeout on a function
-  which changes the variable foo (above) to 'bar'
+  which changes the variable changed (above) to the boolean true;
   And resolve the promise when setTimeout completes.
 */
 
@@ -78,48 +78,48 @@ var foo;
 
 // #6  ###################
 // # Constructor Function
-// Make a constructor function called taco that takes in 3 parameters: shell, meat, veggies and assigns them to identically named properties.
+// Make a constructor function called Sandwich that takes in 3 parameters: bread, meat, spread and assigns them to identically named properties.
 
 
 
 
 // #7  ###################
 // # Implicit binding
-// Make a constructor function called burrito.  It has a property called percentLeft = 100.  It has a property called eat that is a function.  When eat is invoked it uses context to implicitly subract 25 from the percentLeft on the burrito.
+// Make a constructor function called RoadTrip.  It has a property called gasLeft = 100.  It has a property called drive that is a function.  When drive is invoked it uses context to implicitly subract 10 from the gasLeft on the roadTrip.
 
 
 
 // #8  ###################
-// # Prototype 1 
-// Add prototype function to the array type that doubles the value of every item in the array
+// # Prototype 1
+// Add prototype function called addTwo to the array type that adds two to the value of every item in the array.
 
 
 
 
 // #9  ###################
 // # Prototype 2
-// Write a constructor function called chimichanga.  It has a property called percentLeft = 100.  It has a prototype function called eat.  When eat is invoked it uses context to implicitly subract 20 from the precentLeft on the chimichanga.
+// Write a constructor function called CoinToss.  It has a property called results which is an empty array.  It has a prototype function called flip.  When flip is invoked it uses context to implicitly add 'heads' or 'tails' to the results array.
 
 
 
 
 // #10  ###################
 // # Closure 1
-// Write a function called sentence machine.  It takes in a parameter called partOne.  It returns a function called sentenceSmasher.
-// When sentenceSmasher is invoked it should take in a parameter called partTwo and return a new string that adds partOne and partTwo together.  
+// Write a function called animal machine that creates new animals from two existing animals.  It takes in a parameter called partOne.  It returns a function called animalSmasher.
+// When animalSmasher is invoked it should take in a parameter called partTwo and return a new string that adds partOne and partTwo together.
 
 
 
 // #11  ###################
 // # Closure 2
-// Write a function called subway.  It takes in one parameter called personName.  
-// It needs to keep track of what ingredients the person wants on their sandwhich.
-// It needs to do this by returning a function called addIngredient.  
-// When addIngredient is invoked it saves that ingredient with previously added ingredients and then returns an object that looks like this (Replace the parts wrapped in <> with correct data): 
+// Write a function called partyTime.  It takes in one parameter called partyName.
+// It needs to keep track of who is on the guest list.
+// It needs to do this by returning a function called addGuest.
+// When addGuest is invoked it saves that guest with previously added guests and then returns an object that looks like this (Replace the parts wrapped in <> with correct data):
 // ```
 // {
-//     orderPerson: <Person name goes here>,
-//     ingredients: <Array of ingredients goes here>
+//     partyName: <Person name goes here>,
+//     guestList: <Array of ingredients goes here>
 // }
 // ```
 
@@ -130,4 +130,4 @@ var foo;
 // Write a function that takes in 2 parameters.
 // If both parameters are the same type an the same value return "Exact match".
 // If both parameters have the same value but are different types return "Different types"
-// Otherwise return "Different values" 
+// Otherwise return "Different values"

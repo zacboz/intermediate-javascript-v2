@@ -1,11 +1,11 @@
 describe('grandpa', function() {
   it ('should have the correct answers', function() {
     expect(scopeArray1).toEqual(jasmine.any(Array));
-    expect(scopeArray1).toContain('grandpa', 'uncle', 'cousin');
-    expect(scopeArray2).toContain('dad', 'son');
-    expect(scopeArray3).toContain('grandpa', 'dad', 'son');
-    expect(scopeArray4).toContain('uncle', 'cousin');
-    expect(scopeArray5).toContain('son');
+    expect(scopeArray1).toContain('street', 'neighbors', 'neighborsSecondFloor');
+    expect(scopeArray2).toContain('firstFloor', 'secondFloor');
+    expect(scopeArray3).toContain('street', 'firstFloor', 'secondFloor');
+    expect(scopeArray4).toContain('neighbors', 'neighborsSecondFloor');
+    expect(scopeArray5).toContain('secondFloor');
   })
 })
 
@@ -15,9 +15,9 @@ describe('async', function() {
   })
 
   it('should not change foo before timeout', function() {
-    var foo;
+    var changed = false;
     async();
-    expect(foo).toEqual(undefined);
+    expect(changed).toEqual(false);
   })
 
   it('should return a promise', function() {
@@ -25,9 +25,9 @@ describe('async', function() {
   })
 
   it('should change foo after promise', function(done) {
-    foo = undefined;
+    changed = false;
     async().then(function(res) {
-      expect(foo).toEqual('bar');
+      expect(changed).toEqual(true);
       done();
     })
   })
@@ -109,138 +109,138 @@ describe('context3', function() {
   })
 })
 
-describe('Taco', function() {
+describe('Sandwich', function() {
   it('should exist', function() {
-    expect(Taco).toEqual(jasmine.any(Function));
+    expect(Sandwich).toEqual(jasmine.any(Function));
   })
   it('should be a constructor', function() {
-    expect(new Taco()).toEqual(jasmine.any(Object));
+    expect(new Sandwich()).toEqual(jasmine.any(Object));
   })
 
-  it('should make a good Taco', function() {
+  it('should make a good Sandwich', function() {
 
     function getIngredients() {
-      var shell = ['flour', 'corn', 'seaweed'];
-      var meat = ['chicken', 'beef', 'pork'];
-      var veggies = ['lettuce', 'tomato', 'onion'];
+      var bread = ['wheat', 'white', 'sourdough'];
+      var meat = ['chicken', 'ham', 'turkey'];
+      var spread = ['lettuce', 'tomato', 'bacon'];
       var num = Math.floor(Math.random() * 3);
       return {
-        shell: shell[num],
+        bread: bread[num],
         meat: meat[num],
-        veggies: veggies[num]
+        spread: spread[num]
       }
     }
 
     var ingredients = getIngredients();
 
     expect(
-      new Taco(ingredients[0], ingredients[1], ingredients[2])
+      new Sandwich(ingredients[0], ingredients[1], ingredients[2])
     ).toEqual(jasmine.objectContaining(
       {
-        shell: ingredients[0],
+        bread: ingredients[0],
         meat: ingredients[1],
-        veggies: ingredients[2]
+        spread: ingredients[2]
       }
     ))
   })
 })
 
-describe('Burrito', function() {
+describe('RoadTrip', function() {
   it('should exist', function() {
-    expect(Burrito).toEqual(jasmine.any(Function));
+    expect(RoadTrip).toEqual(jasmine.any(Function));
   })
 
   it('should be a constructor', function() {
-    expect(new Burrito()).toEqual(jasmine.any(Object));
+    expect(new RoadTrip()).toEqual(jasmine.any(Object));
   })
 
   it('should have a method called eat', function() {
-    expect(new Burrito().eat).toEqual(jasmine.any(Function));
+    expect(new RoadTrip().drive).toEqual(jasmine.any(Function));
   })
 
-  it('should subtract from percentLeft', function() {
-    var californiaBurrito = new Burrito();
-    californiaBurrito.eat();
-    californiaBurrito.eat();
-    expect(californiaBurrito.percentLeft).toEqual(50);
+  it('should subtract from gasLeft', function() {
+    var californiaRoadTrip = new RoadTrip();
+    californiaRoadTrip.drive();
+    californiaRoadTrip.drive();
+    expect(californiaBurrito.gasLeft).toEqual(80);
   })
 })
 
-describe('doubler', function () {
+describe('addTwo', function () {
   it('should exist', function () {
-    expect(Array.prototype.doubler).toEqual(jasmine.any(Function))
+    expect(Array.prototype.addTwo).toEqual(jasmine.any(Function))
   });
 
-  it('should double an array', function () {
-    expect([1, 2, 3].doubler()).toEqual([2, 4, 6]);
+  it('should add two to each item in an array', function () {
+    expect([1, 2, 3].doubler()).toEqual([3, 4, 5]);
   });
 });
 
-describe('Chimichanga', function() {
+describe('CoinToss', function() {
   it('should exist', function() {
-    expect(Chimichanga).toEqual(jasmine.any(Function));
+    expect(CoinToss).toEqual(jasmine.any(Function));
   })
   it('should be a constructor function', function() {
-    expect(new Chimichanga()).toEqual(jasmine.any(Object));
+    expect(new CoinToss()).toEqual(jasmine.any(Object));
   })
 
   it('should make a great chimichanga', function() {
-    var mmm = new Chimichanga();
+    var game = new CoinToss();
 
-    mmm.eat();
-    mmm.eat();
+    game.flip();
+    game.flip();
 
-    expect(mmm.percentLeft).toEqual(60);
+    expect(game.results.length).toEqual(2);
   })
 })
 
-describe('sentenceMachine', function() {
+describe('animalMachine', function() {
   it('should exist', function() {
-    expect(sentenceMachine).toEqual(jasmine.any(Function))
+    expect(animalMachine).toEqual(jasmine.any(Function))
   })
 
   it('should return a function', function() {
-    expect(sentenceMachine()).toEqual(jasmine.any(Function))
+    expect(animalMachine()).toEqual(jasmine.any(Function))
   })
   //TODO: randomize sentences
   it('should smash two sentences together. *HULK SMASH!*', function() {
-    expect(sentenceMachine('HULK ')('SMASH')).toEqual('HULK SMASH');
+    expect(animalMachine('duck')('turtle')).toEqual('duckturtle');
   })
 })
 
-describe('subway', function() {
+describe('partyTime', function() {
   beforeEach(function() {
     this.names = ['Jeremy', 'Brack', 'Brett', 'Brian', 'Jess', 'Stephen'];
-    this.ingredients = ['turkey', 'bacon', 'ham', 'swiss'];
+    this.guests = ['Arnold', 'Stu', 'Eddie', 'Clayton'];
     this.name = this.names[Math.floor(Math.random() * this.names.length)];
-    this.ingredient = this.ingredients[Math.floor(Math.random() * this.ingredients.length)]
-    this.order = subway(this.name);
+    this.guest = this.guests[Math.floor(Math.random() * this.ingredients.length)]
+    this.party = partyTime(this.name);
   })
   it('should exist', function() {
-    expect(subway).toEqual(jasmine.any(Function));
+    expect(partyTime).toEqual(jasmine.any(Function));
   })
 
   it('should return a function', function() {
-    expect(subway("Brett")).toEqual(jasmine.any(Function))
+    expect(partyTime("Bretts Birthday")).toEqual(jasmine.any(Function))
   })
 
-  it('should add ingredients', function() {
+  it('should add guests', function() {
     var that = this;
 
     expect(this.order(this.ingredient))
       .toEqual(jasmine.objectContaining(
         {
-          orderPerson: that.name,
-          ingredients: [that.ingredient]
+          partyName: that.name,
+          guestList: [that.guest]
         }
       ))
   })
 
-  it('should not get orders mixed up', function() {
-    var newOrder = subway(this.names[Math.floor(Math.random() * this.names.length)])
-    var originalOrder = this.order(this.ingredient);
+  it('should not get parties mixed up', function() {
+    var newParty = partyTime(this.names[Math.floor(Math.random() * this.names.length)])
+    var originalParty = this.order(this.guest);
 
-    expect(newOrder).not.toEqual(originalOrder);
+    expect(newParty).not.toEqual(originalParty);
   })
 })
 
