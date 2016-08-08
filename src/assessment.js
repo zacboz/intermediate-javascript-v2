@@ -52,27 +52,30 @@ var changed = false;
 */
 
 
-// #3  ###################
+var contextObj = {
+  number: 0
+}
+
+function sum(x, y) {
+  return this.number += (x + y);
+}
+
+// #3 ###################
 // # Context 1
-// Write a function called context1 that takes in 4 parameters: A function called myFn, an object called context, param1, and param2.
-// Invoke myFn explicitly setting the context to the object called context.  Pass in param1 and param2 in order as well.
+// Create a function called context1 that will take in two numbers x and y.
+// invoke sum passing in the two numbers x and y and explicitly set the context to the object called contextObj.
 
-
-
-
-// #4  ###################
+// #4 ####################
 // # Context 2
-// Write a function called context2 that takes in 3 parameters: A function called myFn, an object called context, and an array called params
-// Invoke myFn explicitly setting the context to the object called context.  Pass in params
+// Write a function called context2 that will take in an array of numbers called params
+// invoke sum and explicity set the context to the object called contextObj, and pass in the array called params.
 
 
-
-
-// #5  ###################
+// #5 ####################
 // # Context 3
-// Write a function called context3 that takes in 2 parameters: A function called myFn, and an object called context
-// Make sure the function is permanently linked to the context.  This should give you a new function, return it.
-
+// Write a function called context3.
+// Make context3 permanently link the context of sum to the object contextObj.
+// This should give you a new function. Return it.
 
 
 
