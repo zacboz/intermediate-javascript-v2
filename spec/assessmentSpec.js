@@ -1,11 +1,11 @@
-describe('grandpa', function() {
+describe('houses', function() {
   it ('should have the correct answers', function() {
     expect(scopeArray1).toEqual(jasmine.any(Array));
     expect(scopeArray1).toContain('street', 'neighbors', 'neighborsSecondFloor');
-    expect(scopeArray2).toContain('firstFloor', 'secondFloor');
-    expect(scopeArray3).toContain('street', 'firstFloor', 'secondFloor');
-    expect(scopeArray4).toContain('neighbors', 'neighborsSecondFloor');
-    expect(scopeArray5).toContain('secondFloor');
+    expect(scopeArray2).toEqual(['firstFloor', 'secondFloor']);
+    expect(scopeArray3).toEqual(['street', 'firstFloor', 'secondFloor']);
+    expect(scopeArray4).toEqual(['neighbors', 'neighborsSecondFloor']);
+    expect(scopeArray5).toEqual(['secondFloor']);
   })
 })
 
@@ -45,17 +45,14 @@ describe('context1', function() {
   })
 
   it('should correctly assign context', function() {
-    // var getNum = function() {
-    //   Math.floor(Math.random() * 100);
-    // }
     var num = getNum();
-    var num2 = getNum(), num3 = getNum();
-    var obj = {num: num};
-    function sum(a, b) {
-      return this.num + a + b;
-    }
-    var result = context1(sum, obj, num2, num3);
-    expect(result).toEqual(num + num2 + num3);
+    var num2 = getNum(),
+    num3 = getNum();
+
+    contextObj.number = num;
+
+    context1(num2, num3);
+    expect(contextObj.number).toEqual(num + num2 + num3);
   })
 })
 
@@ -69,16 +66,13 @@ describe('context2', function() {
   })
 
   it('should correctly assign context', function() {
-    var nums = [getNum(), getNum(), getNum()]
-    console.log(nums);
+    var nums = [getNum(), getNum()]
     var num = getNum();
-    var obj = {number: num};
+    contextObj.number = num;
 
-    function sum(a, b, c) {
-      return this.number + a + b + c;
-    }
-    var result = context2(sum, obj, nums);
-    expect(result).toEqual(num + nums.reduce(function(a, b) {
+    context2(nums);
+
+    expect(contextObj.number).toEqual(num + nums.reduce(function(a, b) {
       return a + b;
     }))
   })
@@ -97,15 +91,10 @@ describe('context3', function() {
   })
 
   it('should assign context correctly', function() {
-    var obj = {
-      num: getNum()
-    };
 
-    function get() {
-      return this.num
-    }
+    let num = contextObj.number = 0;
 
-    expect(context3(get, obj)()).toEqual(obj.num)
+    expect(context3()(1, 2)).toEqual(3);
   })
 })
 
@@ -162,7 +151,7 @@ describe('RoadTrip', function() {
     var californiaRoadTrip = new RoadTrip();
     californiaRoadTrip.drive();
     californiaRoadTrip.drive();
-    expect(californiaBurrito.gasLeft).toEqual(80);
+    expect(californiaRoadTrip.gasLeft).toEqual(80);
   })
 })
 
@@ -172,7 +161,7 @@ describe('addTwo', function () {
   });
 
   it('should add two to each item in an array', function () {
-    expect([1, 2, 3].doubler()).toEqual([3, 4, 5]);
+    expect([1, 2, 3].addTwo()).toEqual([3, 4, 5]);
   });
 });
 
@@ -184,13 +173,18 @@ describe('CoinToss', function() {
     expect(new CoinToss()).toEqual(jasmine.any(Object));
   })
 
-  it('should make a great chimichanga', function() {
+  it('should make a fair coin toss', function() {
     var game = new CoinToss();
+    let possibles = ['tails', 'heads'];
 
     game.flip();
     game.flip();
 
     expect(game.results.length).toEqual(2);
+
+    game.results.forEach(function(toss) {
+      expect(possibles.indexOf(toss)).toBeGreaterThan(-1);
+    })
   })
 })
 
@@ -203,7 +197,7 @@ describe('animalMachine', function() {
     expect(animalMachine()).toEqual(jasmine.any(Function))
   })
   //TODO: randomize sentences
-  it('should smash two sentences together. *HULK SMASH!*', function() {
+  it('should smash two animals together. *HULK SMASH!*', function() {
     expect(animalMachine('duck')('turtle')).toEqual('duckturtle');
   })
 })
@@ -213,7 +207,7 @@ describe('partyTime', function() {
     this.names = ['Jeremy', 'Brack', 'Brett', 'Brian', 'Jess', 'Stephen'];
     this.guests = ['Arnold', 'Stu', 'Eddie', 'Clayton'];
     this.name = this.names[Math.floor(Math.random() * this.names.length)];
-    this.guest = this.guests[Math.floor(Math.random() * this.ingredients.length)]
+    this.guest = this.guests[Math.floor(Math.random() * this.guests.length)]
     this.party = partyTime(this.name);
   })
   it('should exist', function() {
@@ -227,7 +221,7 @@ describe('partyTime', function() {
   it('should add guests', function() {
     var that = this;
 
-    expect(this.order(this.ingredient))
+    expect(this.party(this.guest))
       .toEqual(jasmine.objectContaining(
         {
           partyName: that.name,
@@ -238,7 +232,7 @@ describe('partyTime', function() {
 
   it('should not get parties mixed up', function() {
     var newParty = partyTime(this.names[Math.floor(Math.random() * this.names.length)])
-    var originalParty = this.order(this.guest);
+    var originalParty = this.party(this.guest);
 
     expect(newParty).not.toEqual(originalParty);
   })

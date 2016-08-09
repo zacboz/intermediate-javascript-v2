@@ -69,7 +69,7 @@ function sum(x, y) {
  #4 ####################
  # Context 2
  Write a function called context2 that will take in an array of numbers called params
- invoke sum and explicity set the context to the object called contextObj, and pass in the array called params.
+ invoke sum and explicitly set the context to the object called contextObj, and pass in the array called params.
 
 
  #5 ####################

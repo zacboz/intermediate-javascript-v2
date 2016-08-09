@@ -64,11 +64,17 @@ function sum(x, y) {
 // # Context 1
 // Create a function called context1 that will take in two numbers x and y.
 // invoke sum passing in the two numbers x and y and explicitly set the context to the object called contextObj.
+//
+
+
 
 // #4 ####################
 // # Context 2
 // Write a function called context2 that will take in an array of numbers called params
 // invoke sum and explicity set the context to the object called contextObj, and pass in the array called params.
+//
+
+
 
 
 // #5 ####################
@@ -92,6 +98,8 @@ function sum(x, y) {
 
 
 
+
+
 // #8  ###################
 // # Prototype 1
 // Add prototype function called addTwo to the array type that adds two to the value of every item in the array.
@@ -106,9 +114,10 @@ function sum(x, y) {
 
 
 
+
 // #10  ###################
 // # Closure 1
-// Write a function called animal machine that creates new animals from two existing animals.  It takes in a parameter called partOne.  It returns a function called animalSmasher.
+// Write a function called animalMachine that creates new animals from two existing animals.  It takes in a parameter called partOne.  It returns a function called animalSmasher.
 // When animalSmasher is invoked it should take in a parameter called partTwo and return a new string that adds partOne and partTwo together.
 
 
@@ -125,6 +134,7 @@ function sum(x, y) {
 //     guestList: <Array of ingredients goes here>
 // }
 // ```
+
 
 
 
